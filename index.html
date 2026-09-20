@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#1a0a14" />
+    <title>Happy Birthday 🎂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Màn thiệp mời -->
+    <section id="invite" class="invite" aria-label="Thiệp mời">
+      <div class="invite__glow"></div>
+      <div class="invite__card">
+        <div class="invite__decor invite__decor--cake" aria-hidden="true">🎂</div>
+        <div class="invite__decor invite__decor--flower" aria-hidden="true">🌷</div>
+        <p class="invite__eyebrow" id="inviteEyebrow">For someone special</p>
+        <h1 class="invite__title" id="inviteTitle">Một món quà nhỏ</h1>
+        <p class="invite__subtitle" id="inviteSubtitle">Dành riêng cho ngày đặc biệt của em</p>
+
+        <div class="invite__heart" aria-hidden="true">
+          <svg viewBox="0 0 200 180" class="heart-svg">
+            <defs>
+              <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff6b9d" />
+                <stop offset="100%" stop-color="#c9184a" />
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#heartGrad)"
+              d="M100 162 C20 100 8 52 48 28 C72 14 92 28 100 42 C108 28 128 14 152 28 C192 52 180 100 100 162 Z"
+            />
+          </svg>
+          <span class="invite__heart-text">♥</span>
+        </div>
+
+        <p class="invite__to" id="inviteTo">Gửi đến <strong>Em yêu</strong></p>
+        <button type="button" class="invite__btn" id="openGift">
+          <span>Mở quà 🎁</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Cảnh chúc mừng -->
+    <section id="scene" class="scene hidden" aria-label="Cảnh sinh nhật">
+      <canvas id="bgCanvas" class="scene__canvas"></canvas>
+      <div id="floatLayer" class="scene__floats" aria-hidden="true"></div>
+      <div id="cubeLayer" class="scene__cubes" aria-hidden="true"></div>
+
+      <div class="scene__center">
+        <p class="scene__label" id="sceneLabel">Chúc mừng sinh nhật</p>
+        <h2 class="scene__wish" id="mainWish">Happy Birthday</h2>
+        <p class="scene__sub" id="subWish">Tuổi mới thật hạnh phúc</p>
+
+        <div class="cake" id="cake" aria-label="Bánh sinh nhật">
+          <div class="cake__glow"></div>
+          <div class="candle">
+            <div class="candle__flame" id="flame"></div>
+            <div class="candle__stick"></div>
+          </div>
+          <div class="cake__top"></div>
+          <div class="cake__frosting"></div>
+          <div class="cake__body">
+            <span class="cake__drip"></span>
+            <span class="cake__drip"></span>
+            <span class="cake__drip"></span>
+            <span class="cake__drip"></span>
+            <span class="cake__drip"></span>
+          </div>
+          <div class="cake__plate"></div>
+        </div>
+
+        <p class="scene__hint" id="blowHint">Giữ để thổi nến 💨</p>
+        <button type="button" class="scene__blow" id="blowBtn">Thổi nến</button>
+      </div>
+
+      <button type="button" class="scene__share" id="shareBtn" title="Chia sẻ">
+        Chia sẻ / QR
+      </button>
+    </section>
+
+    <!-- Lá thư -->
+    <section id="letter" class="letter hidden" aria-label="Lời nhắn">
+      <div class="letter__card">
+        <h3 id="letterTitle">Gửi em,</h3>
+        <p id="letterBody"></p>
+        <p class="letter__sign" id="letterSign"></p>
+        <button type="button" class="letter__btn" id="openGalleryBtn">
+          Xem ảnh kỷ niệm 📸
+        </button>
+        <button type="button" class="letter__btn letter__btn--ghost" id="replayBtn">
+          Xem lại bánh ✨
+        </button>
+      </div>
+    </section>
+
+    <!-- Gallery ảnh chạy -->
+    <section id="gallery" class="gallery hidden" aria-label="Kỷ niệm">
+      <div class="gallery__hearts" id="galleryHearts" aria-hidden="true"></div>
+      <header class="gallery__header">
+        <p class="gallery__eyebrow">Memories</p>
+        <h2 class="gallery__title" id="galleryTitle">Những khoảnh khắc của chúng mình</h2>
+        <p class="gallery__subtitle" id="gallerySubtitle"></p>
+      </header>
+
+      <div class="gallery__track gallery__track--left" id="galleryRow1"></div>
+      <div class="gallery__track gallery__track--right" id="galleryRow2"></div>
+      <div class="gallery__track gallery__track--left gallery__track--slow" id="galleryRow3"></div>
+
+      <div class="gallery__actions">
+        <button type="button" class="gallery__btn" id="galleryShareBtn">Chia sẻ / QR</button>
+        <button type="button" class="gallery__btn gallery__btn--ghost" id="backLetterBtn">
+          Quay lại thư
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal QR -->
+    <div id="shareModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal__backdrop" id="modalClose"></div>
+      <div class="modal__box">
+        <h3>Gửi thiệp này</h3>
+        <p>Quét mã hoặc copy link để gửi cho người ấy.</p>
+        <div class="modal__qr" id="qrBox"></div>
+        <input type="text" id="shareUrl" class="modal__url" readonly />
+        <div class="modal__actions">
+          <button type="button" id="copyLink">Copy link</button>
+          <button type="button" id="closeModal" class="ghost">Đóng</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
